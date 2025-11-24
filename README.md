@@ -140,17 +140,13 @@ The project follows the **MVC (Model-View-Controller)** pattern:
 
 ## 👨‍💻 Developer
 
-**Ashraf Shihab**
+**Ashraf Khan Shihab**
 
   - GitHub: [@0-shihab-0](https://github.com/0-shihab-0)
 
-## 📄 License
 
-This project is open source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
 
-## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome\! Feel free to check the [issues page](https://github.com/0-shihab-0/Hospital-Management-System/issues).
 
 -----
 

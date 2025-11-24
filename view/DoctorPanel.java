@@ -48,16 +48,42 @@ public class DoctorPanel extends JPanel {
         refreshList();
     }
 
-    // ADD THIS METHOD
     public void setBackToDashboardAction(ActionListener action) {
         btnBack.addActionListener(action);
     }
 
     private void addDoctor() {
-        // ... existing addDoctor code ...
-    }
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String ageStr = txtAge.getText();
+        String spec = txtSpec.getText();
+
+        if (Validator.isEmpty(id) || Validator.isEmpty(name) || 
+            Validator.isEmpty(ageStr) || Validator.isEmpty(spec)) {
+            JOptionPane.showMessageDialog(this, "All fields required!");
+            return;
+        }
+
+        int age;
+        try { 
+            age = Integer.parseInt(ageStr); 
+        } catch (Exception ex) { 
+            JOptionPane.showMessageDialog(this, "Age must be a number!"); 
+            return; 
+        }
+
+        Doctor doctor = new Doctor(id, name, age, spec);
+        manager.addDoctor(doctor);
+        JOptionPane.showMessageDialog(this, "Doctor Added!");
+
+        txtId.setText(""); txtName.setText(""); txtAge.setText(""); txtSpec.setText("");
+        refreshList();
+        }
 
     private void refreshList() {
-        // ... existing refreshList code ...
-    }
+listModel.clear();
+        for (Doctor d : manager.doctors) {
+            listModel.addElement(d.getId() + " — " + d.getName() + " (" + d.getSpecialization() + ")");
+        }
+        }
 }

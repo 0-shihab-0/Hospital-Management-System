@@ -46,16 +46,31 @@ public class RoomPanel extends JPanel {
         refreshList();
     }
 
-    // ADD THIS METHOD
     public void setBackToDashboardAction(ActionListener action) {
         btnBack.addActionListener(action);
     }
 
     private void addRoom() {
-        // ... existing addRoom code ...
-    }
+    String id = txtId.getText();
+        String type = txtType.getText();
+
+        if (Validator.isEmpty(id) || Validator.isEmpty(type)) {
+            JOptionPane.showMessageDialog(this, "All fields required!");
+            return;
+        }
+
+        Room room = new Room(id, type);
+        manager.addRoom(room);
+        JOptionPane.showMessageDialog(this, "Room Added!");
+
+        txtId.setText(""); txtType.setText("");
+        refreshList();
+        }
 
     private void refreshList() {
-        // ... existing refreshList code ...
+        listModel.clear();
+        for (Room r : manager.rooms) {
+            listModel.addElement(r.getRoomId() + " — " + r.getType() + " (occupied: " + r.isOccupied() + ")");
+        }
     }
 }

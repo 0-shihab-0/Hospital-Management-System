@@ -49,16 +49,51 @@ public class BillingPanel extends JPanel {
         refreshAll();
     }
 
-    // ADD THIS METHOD
     public void setBackToDashboardAction(ActionListener action) {
         btnBack.addActionListener(action);
     }
 
     private void addBill() {
-        // ... existing addBill code ...
-    }
+if (cbPatient.getSelectedItem() == null) { 
+            JOptionPane.showMessageDialog(this, "Select patient first!"); 
+            return; 
+        }
+        
+        String amountStr = txtAmount.getText();
+        if (Validator.isEmpty(amountStr)) { 
+            JOptionPane.showMessageDialog(this, "Amount required!"); 
+            return; 
+        }
+        
+        double amount;
+        try { 
+            amount = Double.parseDouble(amountStr); 
+        } catch (Exception ex) { 
+            JOptionPane.showMessageDialog(this, "Amount must be a number!"); 
+            return; 
+        }
 
-    private void refreshAll() {
+        String patientId = ((String) cbPatient.getSelectedItem()).split(" — ")[0];
+        Patient patient = null;
+        
+        for (Patient p : manager.patients) {
+            if (p.getId().equals(patientId)) patient = p;
+        }
+        
+        if (patient == null) { 
+            JOptionPane.showMessageDialog(this, "Invalid patient selection."); 
+            return; 
+        }
+
+        String billId = "B-" + UUID.randomUUID().toString().substring(0,8);
+        manager.addBilling(new Billing(billId, patient, amount));
+        JOptionPane.showMessageDialog(this, "Bill Created: " + billId);
+        
+        txtAmount.setText("");
+        refreshAll();
+        }
+
+    public void refreshAll() {
         cbPatient.removeAllItems(); 
         listModel.clear();
         

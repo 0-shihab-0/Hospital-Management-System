@@ -51,16 +51,42 @@ public class PatientPanel extends JPanel {
         refreshList();
     }
 
-    // Add this method to set the back action
     public void setBackToDashboardAction(ActionListener action) {
         btnBack.addActionListener(action);
     }
 
     private void addPatient() {
-        // ... existing addPatient code ...
-    }
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String ageStr = txtAge.getText();
+        String disease = txtDisease.getText();
+
+        if (Validator.isEmpty(id) || Validator.isEmpty(name) ||
+                Validator.isEmpty(ageStr) || Validator.isEmpty(disease)) {
+            JOptionPane.showMessageDialog(this, "All fields required!");
+            return;
+        }
+
+        int age;
+        try {
+            age = Integer.parseInt(ageStr);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Age must be a number!");
+            return;
+        }
+
+        Patient patient = new Patient(id, name, age, disease);
+        manager.addPatient(patient);
+        JOptionPane.showMessageDialog(this, "Patient Added!");
+
+        txtId.setText(""); txtName.setText(""); txtAge.setText(""); txtDisease.setText("");
+        refreshList();
+        }
 
     private void refreshList() {
-        // ... existing refreshList code ...
+        listModel.clear();
+        for (Patient p : manager.patients) {
+            listModel.addElement(p.getId() + " — " + p.getName() + " (" + p.getAge() + ")");
+        }
     }
 }

@@ -1,7 +1,5 @@
 package model;
 
-
-// Inheritance: Patient inherits Person
 public class Patient extends Person {
 private String disease;
 
@@ -11,8 +9,7 @@ super(id, name, age);
 this.disease = disease;
 }
 
-
-// Encapsulation: Getter method
 public String getDisease() { return disease; }
 public void setDisease(String disease) { this.disease = disease; }
 }
+

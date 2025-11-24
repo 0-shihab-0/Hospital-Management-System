@@ -39,7 +39,7 @@ public class MainFrame extends JFrame {
 
         add(cardPanel);
 
-        // Hook controller - pass ALL panels now
+        // FIXED: Use the updated UIController that takes all panels
         new UIController(dashboardPanel, patientPanel, doctorPanel, roomPanel, 
                         appointmentPanel, billingPanel, cardPanel, cardLayout);
 

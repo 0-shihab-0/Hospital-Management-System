@@ -20,23 +20,28 @@ public class UIController {
                        JPanel cardPanel, 
                        CardLayout cardLayout) {
 
-        // Dashboard to other panels
-        dashboardPanel.btnPatient.addActionListener(e ->
-                cardLayout.show(cardPanel, "patient"));
+        dashboardPanel.btnPatient.addActionListener(e -> {
+            cardLayout.show(cardPanel, "patient");
+        });
 
-        dashboardPanel.btnDoctor.addActionListener(e ->
-                cardLayout.show(cardPanel, "doctor"));
+        dashboardPanel.btnDoctor.addActionListener(e -> {
+            cardLayout.show(cardPanel, "doctor");
+        });
 
-        dashboardPanel.btnRoom.addActionListener(e ->
-                cardLayout.show(cardPanel, "room"));
+        dashboardPanel.btnRoom.addActionListener(e -> {
+            cardLayout.show(cardPanel, "room");
+        });
 
-        dashboardPanel.btnAppointment.addActionListener(e ->
-                cardLayout.show(cardPanel, "appointment"));
+        dashboardPanel.btnAppointment.addActionListener(e -> {
+            appointmentPanel.refreshAll();
+            cardLayout.show(cardPanel, "appointment");
+        });
 
-        dashboardPanel.btnBilling.addActionListener(e ->
-                cardLayout.show(cardPanel, "billing"));
+        dashboardPanel.btnBilling.addActionListener(e -> {
+            billingPanel.refreshAll();
+            cardLayout.show(cardPanel, "billing");
+        });
 
-        // Back to dashboard from all panels
         patientPanel.setBackToDashboardAction(e -> 
                 cardLayout.show(cardPanel, "dashboard"));
         

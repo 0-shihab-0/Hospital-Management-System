@@ -23,7 +23,6 @@ public class AppointmentPanel extends JPanel {
         this.manager = manager;
         setLayout(new BorderLayout(10, 10));
 
-        // Create components
         cbPatient = new JComboBox<>();
         cbDoctor = new JComboBox<>();
         txtDate = new JTextField();

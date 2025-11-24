@@ -152,5 +152,3 @@ The project follows the **MVC (Model-View-Controller)** pattern:
 
 ⭐ Star this repository if you find it helpful\!
 
-```
-```

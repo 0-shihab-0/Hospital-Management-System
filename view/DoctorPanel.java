@@ -10,7 +10,7 @@ import controller.Validator;
 public class DoctorPanel extends JPanel {
 
     private JTextField txtId, txtName, txtAge, txtSpec;
-    private JButton btnAdd, btnRefresh, btnBack; // ADD btnBack
+    private JButton btnAdd, btnRefresh, btnBack;
     private JList<String> listDoctors;
     private DefaultListModel<String> listModel;
     private HospitalManager manager;
@@ -23,13 +23,16 @@ public class DoctorPanel extends JPanel {
         txtId = new JTextField(); txtName = new JTextField(); txtAge = new JTextField(); txtSpec = new JTextField();
         btnAdd = new JButton("Add Doctor"); 
         btnRefresh = new JButton("Refresh List");
-        btnBack = new JButton("Back to Dashboard"); // ADD THIS
+        btnBack = new JButton("Back to Dashboard");
 
         form.add(new JLabel("Doctor ID:")); form.add(txtId);
-        form.add(new JLabel("Name:")); form.add(txtName);
-        form.add(new JLabel("Age:")); form.add(txtAge);
-        form.add(new JLabel("Specialization:")); form.add(txtSpec);
-        form.add(btnAdd); form.add(btnBack); // ADD btnBack HERE
+        form.add(new JLabel("Name:"));
+        form.add(txtName);
+        form.add(new JLabel("Age:"));
+        form.add(txtAge);
+        form.add(new JLabel("Specialization:"));
+        form.add(txtSpec);
+        form.add(btnAdd); form.add(btnBack);
 
         listModel = new DefaultListModel<>();
         listDoctors = new JList<>(listModel);

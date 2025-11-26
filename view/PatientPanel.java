@@ -32,7 +32,8 @@ public class PatientPanel extends JPanel {
         form.add(new JLabel("Name:")); form.add(txtName);
         form.add(new JLabel("Age:")); form.add(txtAge);
         form.add(new JLabel("Disease:")); form.add(txtDisease);
-        form.add(btnAdd); form.add(btnBack);
+        form.add(btnAdd);
+        form.add(btnBack);
 
         listModel = new DefaultListModel<>();
         listPatients = new JList<>(listModel);
@@ -79,14 +80,17 @@ public class PatientPanel extends JPanel {
         manager.addPatient(patient);
         JOptionPane.showMessageDialog(this, "Patient Added!");
 
-        txtId.setText(""); txtName.setText(""); txtAge.setText(""); txtDisease.setText("");
+        txtId.setText("");
+        txtName.setText("");
+        txtAge.setText("");
+        txtDisease.setText("");
         refreshList();
         }
 
     private void refreshList() {
         listModel.clear();
         for (Patient p : manager.patients) {
-            listModel.addElement(p.getId() + " — " + p.getName() + " (" + p.getAge() + ")");
+            listModel.addElement(p.getId() + " — " + p.getName() + " (" + p.getAge() + ")"+ " (" + p.getDisease() + ")");
         }
     }
 }

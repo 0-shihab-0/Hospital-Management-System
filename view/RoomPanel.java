@@ -10,7 +10,7 @@ import controller.Validator;
 public class RoomPanel extends JPanel {
 
     private JTextField txtId, txtType;
-    private JButton btnAdd, btnRefresh, btnBack; // ADD btnBack
+    private JButton btnAdd, btnRefresh, btnBack;
     private JList<String> listRooms;
     private DefaultListModel<String> listModel;
     private HospitalManager manager;
@@ -19,15 +19,15 @@ public class RoomPanel extends JPanel {
         this.manager = manager;
         setLayout(new BorderLayout(10,10));
 
-        JPanel form = new JPanel(new GridLayout(4,2,6,6)); // Changed to 4 rows
+        JPanel form = new JPanel(new GridLayout(4,2,6,6)); 
         txtId = new JTextField(); txtType = new JTextField();
         btnAdd = new JButton("Add Room"); 
         btnRefresh = new JButton("Refresh List");
-        btnBack = new JButton("Back to Dashboard"); // ADD THIS
+        btnBack = new JButton("Back to Dashboard"); 
 
         form.add(new JLabel("Room ID:")); form.add(txtId);
         form.add(new JLabel("Type:")); form.add(txtType);
-        form.add(btnAdd); form.add(btnBack); // ADD btnBack HERE
+        form.add(btnAdd); form.add(btnBack);
 
         listModel = new DefaultListModel<>();
         listRooms = new JList<>(listModel);

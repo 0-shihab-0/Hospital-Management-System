@@ -22,15 +22,15 @@ public class BillingPanel extends JPanel {
         this.manager = manager;
         setLayout(new BorderLayout(10,10));
 
-        JPanel form = new JPanel(new GridLayout(4,2,6,6)); // Changed to 4 rows
+        JPanel form = new JPanel(new GridLayout(4,2,6,6)); 
         cbPatient = new JComboBox<>(); txtAmount = new JTextField();
         btnAdd = new JButton("Create Bill"); 
         btnRefresh = new JButton("Refresh List");
-        btnBack = new JButton("Back to Dashboard"); // ADD THIS
+        btnBack = new JButton("Back to Dashboard");
 
         form.add(new JLabel("Select Patient:")); form.add(cbPatient);
         form.add(new JLabel("Amount:")); form.add(txtAmount);
-        form.add(btnAdd); form.add(btnBack); // ADD btnBack HERE
+        form.add(btnAdd); form.add(btnBack);
 
         listModel = new DefaultListModel<>();
         listBills = new JList<>(listModel);
